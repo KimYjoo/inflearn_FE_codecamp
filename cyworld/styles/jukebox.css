@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+
+.divideLine {
+    width: 100%;
+    border-top: 1px solid gray;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.wrapper__header {
+    width: 100%;
+    height: 203px;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper__title {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contents__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title {
+    color: #55B2E4;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 8px;
+    padding-left: 5px;
+}
+
+.albumWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 15px;
+}
+
+.album {
+    width: 120px;
+    height: 158px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.album__title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #0F465E;
+}
+
+.album__artist {
+    font-size: 10px;
+    font-weight: 700;
+    color: #999999;
+}
+
+.wrapper__body {
+    width: 100%;
+    height: 146px;
+    display: flex;
+    flex-direction: column;
+}
+
+.albumTable {
+    width: 100%;
+    height: 120px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+}
+
+.table__header th:nth-child(3),th:nth-child(4) {
+    text-align: start;
+}
+
+.table__contents td:nth-child(1),td:nth-child(2) {
+    text-align: center;
+}
+
+.table__header th {
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    background-color: #EEEEEE;
+    font-weight: 700;
+    color: #999999;
+}
+
+.table__contents td {
+    border-bottom: 1px dotted #999999;
+}
+
+.table__title, .table__artist {
+    color: #0F465E;
+}
