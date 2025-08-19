@@ -58,8 +58,7 @@ html, body {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 0px 15px;
+    justify-content: space-around;
 }
 
 .album {
@@ -68,6 +67,13 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+}
+
+.album-thumnail {
+    width: 120px;
+    height: 120px;
+
 }
 
 .album__title {
@@ -101,7 +107,7 @@ html, body {
 }
 
 .table__header th:nth-child(3),th:nth-child(4) {
-    text-align: start;
+    text-align: left;
 }
 
 .table__contents td:nth-child(1),td:nth-child(2) {
@@ -117,7 +123,7 @@ html, body {
 }
 
 .table__contents td {
-    border-bottom: 1px dotted #999999;
+    border-bottom: 1px dashed #999999;
 }
 
 .table__title, .table__artist {
