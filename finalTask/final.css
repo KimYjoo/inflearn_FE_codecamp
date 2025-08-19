@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    width: 540px;
+    height: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 78px;
+    border-radius: 15px;
+    border: 1px solid #AACDFF;
+    box-shadow: 0px 7px 7px 0 #0068FF40;
+}
+
+.wrapper__title {
+    width: 380px;
+    height: 47px;
+    font-weight: 700;
+    font-size: 32px;
+    color: #0068FF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.wrapper__body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 60px;
+}
+
+.input-box {
+    width: 100%;
+    height: 60px;
+    border: 1px solid #D2D2D2;
+    border-radius: 7px;
+    padding: 20px;
+}
+
+.phone-number-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.phoneNumber-input{
+    width: 100px;
+    height: 40px;
+    border-radius: 7px;
+    border: 1px solid #D2D2D2;
+    padding: 10px;
+}
+
+.auth-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+
+.numberBox {
+    color: #0068FF;
+    padding-right: 11px;
+    font-size: 18px;
+}
+
+.tokenButton {
+    width: 120px;
+    height: 40px;
+    border: 1px solid #D2D2D2;
+    border-radius: 7px;
+    background-color: white;
+    color: #0068FF;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.disabledButton:disabled {
+    border: 1px solid #D2D2D2;
+    border-radius: 7px;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: default;
+}
+
+.location-select {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.gender-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 130px;
+    font-size: 16px;
+}
+
+.gender-box input[type="radio"] {
+    width: 18px;
+    height: 18px;
+}
+
+.divideLine {
+    width: 100%;
+    border: 1px solid #E5E5E5;
+}
+
+.signup-box {
+    width: 380px;
+    height: 75px;
+    border: 1px solid #0068FF;
+    border-radius: 10px;
+    color: #0068FF;
+    font-size: 18px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.input-error {
+    text-align: center;
+    color: red;
+    font-size: 10px;
+    height: fit-content;
+}

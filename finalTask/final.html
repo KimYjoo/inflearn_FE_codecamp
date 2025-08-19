@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="./final.css">
+    <title>Document</title>
+    <script src="./final.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="wrapper__title">
+            <div class="signin-title">코드캠프 회원가입</div>
+        </div>
+        <div class="wrapper__body">
+            <input class="input-box" type="text" id="email" placeholder="이메일을 입력해 주세요.">
+            <div class="input-error" id="email-input-error" hidden>이메일을 입력해 주세요.</div>
+            <div class="input-error" id="email-form-error" hidden>이메일 입력 형식을 확인해주세요.</div>
+            <input class="input-box" type="text" id="name" placeholder="이름을 입력해 주세요.">
+            <div class="input-error" id="name-input-error" hidden>이름을 입력해 주세요.</div>
+            <input class="input-box" type="text" id="password1" placeholder="비밀번호를 입력해 주세요.">
+            <div class="input-error" id="password1-input-error" hidden>패스워드를 입력해 주세요.</div>
+            <input class="input-box" type="text" id="password2" placeholder="비밀번호를 다시 입력해 주세요.">
+            <div class="input-error" id="password2-input-error" hidden>패스워드 확인을 입력해 주세요.</div>
+            <div class="input-error" id="password-uncorrect-error" hidden>패스워드가 틀립니다.</div>
+            <div class="phone-number-box">
+                <input class="phoneNumber-input" type="text" id="phoneNumber1" oninput="checkNumber1()"> -
+                <input class="phoneNumber-input" type="text" id="phoneNumber2" oninput="checkNumber2()"> -
+                <input class="phoneNumber-input" type="text" id="phoneNumber3" oninput="checkNumber3()">
+            </div>
+            <div class="auth-box">
+                <div class="numberBox" id="token">000000</div>
+                <button class="tokenButton disabledButton" id="getToken" onclick="getToken()" disabled>인증번호 전송</button>
+            </div>
+            <div class="auth-box">
+                <div class="numberBox" id="timer">3:00</div>
+                <button class="tokenButton disabledButton" id="auth" onclick="authConfirmed()" disabled>인증 확인</button>
+            </div>
+            <div class="input-box">
+                <select class="location-select" id="location">
+                    <option value="" disabled selected>지역을 선택하세요.</option>
+                    <option value="서울">서울</option>
+                    <option value="인천">인천</option>
+                    <option value="경기">경기</option>
+                </select>
+            </div>
+            <div class="input-error" id="location-input-error" hidden>지역을 선택해주세요.</div>
+            <div class="gender-box">
+                <label>
+                    <input type="radio" value="femail" name="gender">
+                    <span>여성</span>
+                </label>
+                <label>
+                    <input type="radio" value="mail" name="gender">
+                    <span>남성</span>
+                </label>                
+            </div>
+            <div class="divideLine"></div>
+            <button class="signup-box disabledButton" id="signup" onclick="checkSignup()" disabled>가입하기</button>
+        </div>
+    </div>
+</body>
+</html>
