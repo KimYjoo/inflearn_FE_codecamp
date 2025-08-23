@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>사진 첨부</title>
+  <style>
+    .uploader { display:flex; gap:20px; align-items:flex-start; }
+    .slot { display:flex; flex-direction:column; align-items:center; }
+    .file-input { display:none; }
+
+    .card {
+      width:110px; height:110px;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      gap:6px;
+      background:#d9d9d9; color:#333;
+      border:1px solid #c5c5c5; border-radius:8px;
+      cursor:pointer; user-select:none;
+      transition: box-shadow .15s, transform .05s, border-color .15s;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .card:hover { box-shadow:0 0 0 3px rgba(0,0,0,.08) inset; border-color:#aaa; }
+    .card:active { transform: scale(0.98); }
+    .plus { font-size:28px; line-height:1; }
+    .label { font-size:12px; opacity:.8; }
+
+    .preview {
+      width:110px; height:110px; margin-top:8px;
+      object-fit:cover; border-radius:8px; display:none; border:1px solid #ddd;
+    }
+
+    /* 드래그 오버 시 스타일 */
+    .slot.dragover .card { box-shadow:0 0 0 3px #6aa3ff inset; border-color:#5492ff; }
+  </style>
+</head>
+<body>
+  <h3>사진 첨부</h3>
+
+  <div class="uploader">
+    <!-- 슬롯 1 -->
+    <div class="slot">
+      <input class="file-input" id="file1" type="file" accept="image/*">
+      <label class="card" for="file1" aria-label="이미지 업로드 1">
+        <div class="plus">+</div>
+        <div class="label">Upload</div>
+      </label>
+      <img class="preview" id="prev1" alt="미리보기 1">
+    </div>
+
+    <!-- 슬롯 2 -->
+    <div class="slot">
+      <input class="file-input" id="file2" type="file" accept="image/*">
+      <label class="card" for="file2" aria-label="이미지 업로드 2">
+        <div class="plus">+</div>
+        <div class="label">Upload</div>
+      </label>
+      <img class="preview" id="prev2" alt="미리보기 2">
+    </div>
+
+    <!-- 슬롯 3 -->
+    <div class="slot">
+      <input class="file-input" id="file3" type="file" accept="image/*">
+      <label class="card" for="file3" aria-label="이미지 업로드 3">
+        <div class="plus">+</div>
+        <div class="label">Upload</div>
+      </label>
+      <img class="preview" id="prev3" alt="미리보기 3">
+    </div>
+  </div>
+
+  <script>
+    function wireSlot(slot) {
+      const input = slot.querySelector(".file-input");
+      const label = slot.querySelector(".card");
+      const preview = slot.querySelector(".preview");
+
+      function showPreview(file) {
+        if (!file) return;
+        const url = URL.createObjectURL(file);
+        preview.src = url;
+        preview.style.display = "block";
+        label.style.display = "none";
+      }
+
+      input.addEventListener("change", () => showPreview(input.files?.[0]));
+
+      // Drag & drop
+      ["dragenter","dragover"].forEach(ev =>
+        slot.addEventListener(ev, e => { e.preventDefault(); slot.classList.add("dragover"); })
+      );
+      ["dragleave","drop"].forEach(ev =>
+        slot.addEventListener(ev, e => { e.preventDefault(); slot.classList.remove("dragover"); })
+      );
+      slot.addEventListener("drop", e => {
+        const file = e.dataTransfer.files && e.dataTransfer.files[0];
+        if (!file) return;
+        // input.files 교체
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        input.files = dt.files;
+        showPreview(file);
+      });
+    }
+
+    document.querySelectorAll(".slot").forEach(wireSlot);
+  </script>
+</body>
+</html>
