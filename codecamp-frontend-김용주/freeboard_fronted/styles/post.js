@@ -1,5 +1,9 @@
 import styled from '@emotion/styled'
 
+export const Container = styled.div`
+    padding: 100px;
+`
+
 export const Wrapper = styled.div`
     width: 1200px;
     border: 1px solid black;
@@ -17,6 +21,13 @@ export const Title = styled.div`
     text-align: center;
 `;
 
+export const PostForm = styled.form`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
 export const WrapperBody = styled.div`
     width: 100%;
     flex-direction: column;
@@ -25,6 +36,14 @@ export const WrapperBody = styled.div`
     margin: 70px 0px;
 `;
 
+export const InputError = styled.div`
+    width: 100%;
+    font-size: 10px;
+    color: red;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+`
 export const UnregisteredAuth = styled.div`
     width: 100%;
     display: flex;
@@ -34,8 +53,7 @@ export const UnregisteredAuth = styled.div`
 `;
 
 export const UnregisteredItem = styled.div`
-    width: 48%;
-
+    width: 486px;
 `;
 
 export const PostItem = styled.div`
@@ -76,14 +94,15 @@ export const InputConText = styled.textarea`
         color: #BDBDBD;
     }
 `
-export const ETCItem = styled.div`
+
+
+export const PostalCodeWrapper = styled.div`
     width: 100%;
     margin-top: 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
-`;
-
+`
 export const InputPostalcode = styled.input`
     width: 77px;
     height: 52px;
@@ -104,6 +123,45 @@ export const ButtonPostalcode = styled.button`
     color: white;
 `
 
+export const UploadImageWrapper = styled.div`
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    `
+
+export const MainSettingWrapper = styled.div`
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+`;
+
+export const RadioWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+`
+
+export const InputRadio = styled.input`
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    &:checked{
+        background-color: #FFD600; 
+    }
+`
+export const RaidoLabel = styled.label`
+    font-size: 16px;
+    position: relative;
+    top: -3px;
+`
+
 export const UploadImage = styled.div`
     width: 78px;
     height: 78px;
@@ -119,4 +177,12 @@ export const ButtonPost = styled.button`
     background-color: #FFD600;
     font-size: 16px;
     border: none;
+`
+
+export const SubmitWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
 `
