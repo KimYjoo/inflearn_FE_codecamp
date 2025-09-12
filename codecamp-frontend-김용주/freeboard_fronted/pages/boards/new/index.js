@@ -37,7 +37,7 @@ export default function port_unregistered() {
     // const [titleError, setTitleError] = useState('');
     // const [contextError, setContextError] = useState('');
 
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm();
     const onSubmit = (data) => {
         console.log(data);
     }
@@ -59,26 +59,6 @@ export default function port_unregistered() {
     // }
 
     function onClickCheckPost(){
-        if(name && password && title && context){
-            setNameError('')
-            setPasswordError('')
-            setTitleError('')
-            setContextError('')
-        }
-        else {
-            if( !name ){
-                setNameError('이름을 입력해주세요.')
-            }
-            if( !password ){
-                setPasswordError('비밀번호를 입력해주세요.')
-            }
-            if( !title ){
-                setTitleError('제목을 입력해주세요.')
-            }
-           if( !context ){
-                setContextError('내용을 입력해주세요.')
-            }
-        }
          
     }
 
@@ -91,31 +71,31 @@ export default function port_unregistered() {
                         <UnregisteredAuth>
                             <UnregisteredItem>
                                 <Tip>작성자</Tip>
-                                <InputText onChange={onChangeName} placeholder='이름을 입력해주세요.' {...register('name', { required: '이름을 입력해주세요.'})}/>
-                                <InputError>{nameError}</InputError>
+                                <InputText placeholder='이름을 입력해주세요.' {...register('name', { required: '이름을 입력해주세요.'})}/>
+                                <InputError>{errors.name?.message}</InputError>
                             </UnregisteredItem>
                             <UnregisteredItem>
                                 <Tip>비밀번호</Tip>
-                                <InputText onChange={onChangePassword} placeholder='비밀번호를 입력해주세요.' {...register('password', { required: '비밀번호를 입력해주세요.'})}/>
-                                <InputError>{passwordError}</InputError>
+                                <InputText placeholder='비밀번호를 입력해주세요.' {...register('password', { required: '비밀번호를 입력해주세요.'})}/>
+                                <InputError>{errors.name?.message}</InputError>
                             </UnregisteredItem>
                         </UnregisteredAuth>
                         <PostItem>  
                             <Tip>제목</Tip>
-                            <InputText onChange={onChangeTitle} placeholder='제목을 작성해주세요.' {...register('title', { required: '제목을 입력해주세요.'})}/>
-                            <InputError>{titleError}</InputError>
+                            <InputText placeholder='제목을 작성해주세요.' {...register('title', { required: '제목을 입력해주세요.'})}/>
+                            <InputError>{errors.name?.message}</InputError>
                         </PostItem>
         
                         <PostItem>
                             <Tip>내용</Tip>
-                            <InputConText onChange={onChangeContext} placeholder='내용을 작성해주세요.' {...register('context', { required: '내용을 입력해주세요.'})}/>
-                            <InputError>{contextError}</InputError>
+                            <InputConText placeholder='내용을 작성해주세요.' {...register('context', { required: '내용을 입력해주세요.'})}/>
+                            <InputError>{errors.name?.message}</InputError>
                         </PostItem>
         
                         <PostItem>
                             <Tip>주소</Tip>
                             <PostalCodeWrapper>
-                                <InputPostalcode onChange={onChangePostalCode} placeholder='07250' />
+                                <InputPostalcode placeholder='07250' />
                                 <ButtonPostalcode>우편번호 검색</ButtonPostalcode>
                             </PostalCodeWrapper>
                             <InputText/>
