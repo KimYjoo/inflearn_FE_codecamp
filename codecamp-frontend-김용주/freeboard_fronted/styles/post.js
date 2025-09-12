@@ -82,7 +82,7 @@ export const InputText = styled.input`
     }
 `
 
-export const InputConText = styled.textarea`
+export const InputConTents = styled.textarea`
     width: 100%;
     height: 480px;
     margin-top: 16px;

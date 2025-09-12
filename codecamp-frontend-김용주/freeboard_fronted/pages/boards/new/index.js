@@ -12,7 +12,7 @@ import {
     PostItem,
     Tip,
     InputText,
-    InputConText,
+    InputConTent,
     PostalCodeWrapper,
     UploadImageWrapper,
     MainSettingWrapper,
@@ -24,43 +24,41 @@ import {
     UploadImage,
     SubmitWrapper,
     ButtonPost } from '../../../styles/post'
+import { gql, useMutation } from '@apollo/client';
 
-export default function port_unregistered() {
-    // const [name, setName] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [title, setTitle] = useState('');
-    // const [context, setContext] = useState('');
-    // const [postalCode, setPostalCode] = useState('');
-    
-    // const [nameError, setNameError] = useState('');
-    // const [passwordError, setPasswordError] = useState('');
-    // const [titleError, setTitleError] = useState('');
-    // const [contextError, setContextError] = useState('');
-
+const CREATE_BOARD = gql`
+    mutation createBoard(
+        $createBoardInput: CreateBoardInput!
+    ){
+        createBoard(
+            createBoardInput:$createBoardInput
+        ){
+            _id
+        }
+    }
+`
+export default function unregisteredPostPage() {
+    const [createBoard] = new useMutation(CREATE_BOARD)
     const {register, handleSubmit, formState: {errors}} = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data);
+        const {writer, password, title, contents} = data;
+        const {data: result} = await createBoard({
+            variables: {
+                createBoardInput: {
+                    writer,
+                    password,
+                    title,
+                    contents
+                }
+            }
+        })
+        console.log('게시글 생성성공:', result)
     }
 
-    // function onChangeName(event){
-    //     setName(event.target.value);
+    // const onClickCheckPost = async () => {
+        
     // }
-    // function onChangePassword(event){
-    //     setPassword(event.target.value);
-    // }
-    // function onChangeTitle(event){
-    //     setTitle(event.target.value);
-    // }
-    // function onChangeContext(event){
-    //     setContext(event.target.value);
-    // }
-    // function onChangePostalCode(event){
-    //     setPostalCode(event.target.value);
-    // }
-
-    function onClickCheckPost(){
-         
-    }
 
     return(
         <Container>
@@ -71,25 +69,25 @@ export default function port_unregistered() {
                         <UnregisteredAuth>
                             <UnregisteredItem>
                                 <Tip>작성자</Tip>
-                                <InputText placeholder='이름을 입력해주세요.' {...register('name', { required: '이름을 입력해주세요.'})}/>
-                                <InputError>{errors.name?.message}</InputError>
+                                <InputText placeholder='이름을 입력해주세요.' {...register('writer', { required: '이름을 입력해주세요.'})}/>
+                                <InputError>{errors.writer?.message}</InputError>
                             </UnregisteredItem>
                             <UnregisteredItem>
                                 <Tip>비밀번호</Tip>
                                 <InputText placeholder='비밀번호를 입력해주세요.' {...register('password', { required: '비밀번호를 입력해주세요.'})}/>
-                                <InputError>{errors.name?.message}</InputError>
+                                <InputError>{errors.password?.message}</InputError>
                             </UnregisteredItem>
                         </UnregisteredAuth>
                         <PostItem>  
                             <Tip>제목</Tip>
                             <InputText placeholder='제목을 작성해주세요.' {...register('title', { required: '제목을 입력해주세요.'})}/>
-                            <InputError>{errors.name?.message}</InputError>
+                            <InputError>{errors.title?.message}</InputError>
                         </PostItem>
         
                         <PostItem>
                             <Tip>내용</Tip>
-                            <InputConText placeholder='내용을 작성해주세요.' {...register('context', { required: '내용을 입력해주세요.'})}/>
-                            <InputError>{errors.name?.message}</InputError>
+                            <InputConTents placeholder='내용을 작성해주세요.' {...register('contents', { required: '내용을 입력해주세요.'})}/>
+                            <InputError>{errors.contents?.message}</InputError>
                         </PostItem>
         
                         <PostItem>
@@ -138,7 +136,7 @@ export default function port_unregistered() {
                         </PostItem>
         
                         <SubmitWrapper>
-                            <ButtonPost onClick={onClickCheckPost}>등록하기</ButtonPost> 
+                            <ButtonPost>등록하기</ButtonPost> 
                         </SubmitWrapper>  
                     </WrapperBody>
                 </PostForm>
