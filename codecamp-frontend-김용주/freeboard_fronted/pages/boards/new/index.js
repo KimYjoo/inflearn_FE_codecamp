@@ -12,19 +12,20 @@ import {
     PostItem,
     Tip,
     InputText,
-    InputConTent,
+    InputConTents,
     PostalCodeWrapper,
     UploadImageWrapper,
     MainSettingWrapper,
     RadioWrapper,
     InputRadio,
-    RaidoLabel,
+    RadioLabel,
     InputPostalcode,
     ButtonPostalcode,
     UploadImage,
     SubmitWrapper,
-    ButtonPost } from '../../../styles/post'
+    ButtonPost } from '../../../styles/boardNew'
 import { gql, useMutation } from '@apollo/client';
+import { useRouter } from 'next/router';
 
 const CREATE_BOARD = gql`
     mutation createBoard(
@@ -38,27 +39,29 @@ const CREATE_BOARD = gql`
     }
 `
 export default function unregisteredPostPage() {
-    const [createBoard] = new useMutation(CREATE_BOARD)
+    const [createBoard] = useMutation(CREATE_BOARD)
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const router = useRouter();
     const onSubmit = async (data) => {
         console.log(data);
         const {writer, password, title, contents} = data;
-        const {data: result} = await createBoard({
-            variables: {
-                createBoardInput: {
-                    writer,
-                    password,
-                    title,
-                    contents
+        try{
+            const {data: result} = await createBoard({
+                variables: {
+                    createBoardInput: {
+                        writer,
+                        password,
+                        title,
+                        contents
+                    }
                 }
-            }
-        })
-        console.log('게시글 생성성공:', result)
+            })
+            console.log('게시글 생성성공:', result)
+            router.push(`/boards/${result.createBoard._id}`);
+        } catch(e){
+            alert(e)
+        }
     }
-
-    // const onClickCheckPost = async () => {
-        
-    // }
 
     return(
         <Container>
@@ -127,10 +130,10 @@ export default function unregisteredPostPage() {
                             <Tip>메인 설정</Tip>
                             <MainSettingWrapper>
                                 <RadioWrapper>
-                                    <InputRadio type="radio" name="mainSetting" id="youtube" /> <RaidoLabel for='youtube'>유튜브</RaidoLabel>
+                                    <InputRadio type="radio" name="mainSetting" id="youtube" /> <RadioLabel htmlFor='youtube'>유튜브</RadioLabel>
                                 </RadioWrapper>
                                 <RadioWrapper>
-                                    <InputRadio type="radio" name="mainSetting" id="image" /> <RaidoLabel for='image'>사진</RaidoLabel>
+                                    <InputRadio type="radio" name="mainSetting" id="image" /> <RadioLabel htmlFor='image'>사진</RadioLabel>
                                 </RadioWrapper>
                             </MainSettingWrapper>
                         </PostItem>

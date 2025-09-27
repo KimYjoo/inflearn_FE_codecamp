@@ -156,7 +156,7 @@ export const InputRadio = styled.input`
         background-color: #FFD600; 
     }
 `
-export const RaidoLabel = styled.label`
+export const RadioLabel = styled.label`
     font-size: 16px;
     position: relative;
     top: -3px;
