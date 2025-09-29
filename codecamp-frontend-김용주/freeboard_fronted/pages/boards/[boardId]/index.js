@@ -35,8 +35,22 @@ import {
     InputCommentPassword,
     CommentStarsWrapper,
     CommentStar,
-    CommentContentsWrapper,
+    ContentsWrapper,
     InputCommentContents,
+    CommentsContentsFooter,
+    CommentContentsLimit,
+    CommentSubmit,
+    CommentContentsWrapper,
+    PostedCommentsContainer,
+    PostedCommentWriterImage,
+    PostedCommentWrapper,
+    PostedCommentEdit,
+    PostedCommentOptionsWrapper,
+    PostedCommentRemove,
+    PostedCommentHeader,
+    PostedCommentContents,
+    PostedCommentCreatedAt,
+    PostedCommentWriterName,
 } from "../../../styles/boardDetail"
 
 const FETCH_BOARD = gql`
@@ -59,12 +73,6 @@ export default function DetailPage(){
     console.log('데이터', data);
     return(
         <>
-            <div>{router.query.boardId} 이동 완료!</div>
-            <div>{data?.fetchBoard?.writer} 작성자1</div>
-            <div> 제목</div>
-            <div> 내용</div>
-
-
             <Container>
                 <BoardWrapper>
                     <BoardHeader>
@@ -81,7 +89,7 @@ export default function DetailPage(){
                     <DivideLine/>
                     <BoardBody>
                         <Title>{data?.fetchBoard?.title}</Title>
-                        <Images></Images>
+                        <Images src="/test_image.jpg"></Images>
                         <Contents>{data?.fetchBoard?.contents}</Contents>
                         <YoutubeVideos></YoutubeVideos>
                         <BoardLikes>
@@ -119,10 +127,36 @@ export default function DetailPage(){
                                 <CommentStar src="/empty_star.png"/>
                             </CommentStarsWrapper>
                         </NewCommentInfoWrapper>
-                        <CommentContentsWrapper>
-                            <InputCommentContents/>
-                        </CommentContentsWrapper>
+                        <ContentsWrapper>
+                            <CommentContentsWrapper><InputCommentContents maxLength={100} placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."/></CommentContentsWrapper>
+                            <CommentsContentsFooter>
+                                <CommentContentsLimit>0/100</CommentContentsLimit>
+                                <CommentSubmit>등록하기</CommentSubmit>
+                            </CommentsContentsFooter>
+                        </ContentsWrapper>
                     </NewCommentWrapper>
+                    <PostedCommentsContainer>
+                        <PostedCommentWriterImage src="/user_image.png"/>
+                        <PostedCommentWrapper>
+                            <PostedCommentHeader>
+                                <PostedCommentWriterName>김용주</PostedCommentWriterName>
+                                <CommentStarsWrapper>
+                                    <CommentStar src="/empty_star.png"/>                        
+                                    <CommentStar src="/empty_star.png"/>                        
+                                    <CommentStar src="/empty_star.png"/>                        
+                                    <CommentStar src="/empty_star.png"/>                        
+                                    <CommentStar src="/empty_star.png"/>                        
+                                </CommentStarsWrapper>
+                            </PostedCommentHeader>
+                            <PostedCommentContents>개쩌네!!</PostedCommentContents>
+                            <PostedCommentCreatedAt>25/09/29</PostedCommentCreatedAt>
+                        </PostedCommentWrapper>
+                        <PostedCommentOptionsWrapper>
+                            <PostedCommentEdit src={"/edit.png"}/>
+                            <PostedCommentRemove src={"/remove.png"}/>
+                        </PostedCommentOptionsWrapper>
+                    </PostedCommentsContainer>
+                    
                 </CommentWrapper>
             </Container>
             <div></div>

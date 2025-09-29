@@ -72,12 +72,12 @@ export default function unregisteredPostPage() {
                         <UnregisteredAuth>
                             <UnregisteredItem>
                                 <Tip>작성자</Tip>
-                                <InputText placeholder='이름을 입력해주세요.' {...register('writer', { required: '이름을 입력해주세요.'})}/>
+                                <InputText type='text' placeholder='이름을 입력해주세요.' {...register('writer', { required: '이름을 입력해주세요.'})}/>
                                 <InputError>{errors.writer?.message}</InputError>
                             </UnregisteredItem>
                             <UnregisteredItem>
                                 <Tip>비밀번호</Tip>
-                                <InputText placeholder='비밀번호를 입력해주세요.' {...register('password', { required: '비밀번호를 입력해주세요.'})}/>
+                                <InputText type='password' placeholder='비밀번호를 입력해주세요.' {...register('password', { required: '비밀번호를 입력해주세요.'})}/>
                                 <InputError>{errors.password?.message}</InputError>
                             </UnregisteredItem>
                         </UnregisteredAuth>

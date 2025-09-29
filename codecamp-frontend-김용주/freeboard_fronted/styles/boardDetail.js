@@ -76,7 +76,9 @@ export const Title = styled.h1`
     width: 100%;
     font-size: 36px;
 `
-export const Images = styled.img``
+export const Images = styled.img`
+    width: 100%;
+`
 export const Contents = styled.div`
     width: 100%;
 `
@@ -155,11 +157,13 @@ export const NewCommentWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 31px;
 `
 export const NewCommentInfoWrapper = styled.div`
     display: flex;
     flex-direction: row;
     gap: 24px;
+    margin-bottom: 20px;
 `
 export const InputCommentWriterName = styled.input`
     width: 180px;
@@ -171,16 +175,100 @@ export const InputCommentPassword = styled.input`
     font-size: 16px;
     padding: 14px 20px;
 `
-export const CommentContentsWrapper = styled.div``
-export const InputCommentContents = styled.input``
-export const CommentContentsLimit = styled.div``
-export const CommentSubmit = styled.div``
+export const ContentsWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    border: 1px solid #BDBDBD;
+    flex-direction: column;
+`
+export const CommentContentsWrapper = styled.div`
+    width: 100%;
+`
+export const InputCommentContents = styled.textarea`
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 108px;
+    font-size: 16px;
+    padding:20px;
+    resize: none;
+    border:none;
+    border-bottom: 1px solid #F2F2F2;
+    &:focus{
+        outline: none;
+    }
+`
+export const CommentsContentsFooter = styled.div`
+    width: 100%;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`
+export const CommentContentsLimit = styled.div`
+    color: #BDBDBD;
+    line-height: 52px;
+    padding-left: 20px;
+`
+export const CommentSubmit = styled.div`
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 52px;
+    vertical-align: middle;
+    padding: 0 16px;
+    font-size: 16px;
+`
 
-export const PostedCommentsContainer = styled.div``
-export const PostedCommentWrapper = styled.div``
-export const PostedCommentWriterImage = styled.img``
-export const PostedCommentWriterName = styled.img``
-export const PostedCommentContents = styled.div``
-export const PostedCommentCreatedAt = styled.div``
-export const PostedCommentEdit = styled.div``
-export const PostedCommentRemove = styled.div``
+export const PostedCommentsContainer = styled.div`
+    width: 100%;
+    border-bottom: 1px solid #BDBDBD;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+`
+export const PostedCommentWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+`
+export const PostedCommentWriterImage = styled.img`
+    width: 48px;
+    height: 48px;
+    margin-right: 12px;
+    padding: 4px;
+`
+export const PostedCommentHeader = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+`
+export const PostedCommentWriterName = styled.div`
+    font-size: 16px;
+    font-weight: 500;
+`
+export const PostedCommentContents = styled.div`
+    font-size: 16px;
+    color: #4F4F4F;
+    margin-top: 4px;
+`
+export const PostedCommentCreatedAt = styled.div`
+    font-size: 12px;
+    color:#BDBDBD;
+    margin: 20px 0;
+`
+export const PostedCommentOptionsWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+`
+export const PostedCommentEdit = styled.div`
+    width: 24px;
+    height: 24px;
+`
+export const PostedCommentRemove = styled.div`
+    width: 24px;
+    height: 24px;
+`
