@@ -90,6 +90,7 @@ export const InputConTents = styled.textarea`
     box-sizing: border-box;
     border: 1px solid #BDBDBD;
     font-size: 16px;
+    resize: none;
     &::placeholder{
         color: #BDBDBD;
     }

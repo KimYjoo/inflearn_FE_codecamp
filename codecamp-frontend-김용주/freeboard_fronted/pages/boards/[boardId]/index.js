@@ -65,12 +65,11 @@ const FETCH_BOARD = gql`
     }
 `
 export default function DetailPage(){
-    const router = useRouter()
+    const router = useRouter();
     const { data } = useQuery(FETCH_BOARD, {
         variables: { boardId:router.query.boardId }
-    })
-    console.log('라우터',router);
-    console.log('데이터', data);
+    });
+
     return(
         <>
             <Container>
@@ -118,7 +117,7 @@ export default function DetailPage(){
                     <NewCommentWrapper>
                         <NewCommentInfoWrapper>
                             <InputCommentWriterName placeholder="작성자"/>
-                            <InputCommentPassword placeholder="비밀번호"/>
+                            <InputCommentPassword type="password" placeholder="비밀번호"/>
                             <CommentStarsWrapper>
                                 <CommentStar src="/empty_star.png"/>
                                 <CommentStar src="/empty_star.png"/>
@@ -159,7 +158,8 @@ export default function DetailPage(){
                     
                 </CommentWrapper>
             </Container>
-            <div></div>
         </>
     )
 }
+
+

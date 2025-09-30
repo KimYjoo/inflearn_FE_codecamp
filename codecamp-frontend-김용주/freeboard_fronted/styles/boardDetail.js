@@ -81,6 +81,8 @@ export const Images = styled.img`
 `
 export const Contents = styled.div`
     width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 `
 export const YoutubeVideos = styled.div`
     margin: 120px 0;
@@ -196,6 +198,9 @@ export const InputCommentContents = styled.textarea`
     border-bottom: 1px solid #F2F2F2;
     &:focus{
         outline: none;
+    }
+    &::placeholder{
+        color:#BDBDBD;
     }
 `
 export const CommentsContentsFooter = styled.div`
