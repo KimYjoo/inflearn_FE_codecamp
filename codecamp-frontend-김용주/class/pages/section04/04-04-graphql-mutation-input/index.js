@@ -12,8 +12,11 @@ const 나의그래프큐엘셋팅 = gql`
 `
 
 export default function GraphqlMutationPage() {
-    const [나의함수] = useMutation(나의그래프큐엘셋팅)
-
+    const [나의함수] = useMutation(나의그래프큐엘셋팅);
+    const [writer, setWriter] = useState();
+    const [title, setTitle] = useState();
+    const [contents, setContents] = useState();
+    
     const onClickSubmit = async () => {
         const result = await 나의함수({
         variables: {
@@ -25,5 +28,22 @@ export default function GraphqlMutationPage() {
         console.log(result)
     }
 
-    return <button onClick={onClickSubmit}>GRAPHQL-API 요청하기</button>
+    const onChangeWriter = (event) => {
+        setWriter(event.target.value);
+    }
+    const onChangeTitle = (event) => {
+        setTitle(event.target.value);
+    }
+    const onChangeContents = (event) => {
+        setContents(event.target.value);
+    }
+
+    return (
+        <div>
+            작성자: <input type="text" onChange={onChangeWriter}/>
+            제목: <input type="text" onChange={onChangeTitle}/>
+            내용: <input type="text" onChange={onChangeContents}/>
+            <button onClick={onClickSubmit}>GRAPHQL-API 요청하기</button>
+        </div>
+    )
 }
