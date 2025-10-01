@@ -1,4 +1,4 @@
-import { CREATE_BOARD } from "./BoardNew.quaries";
+import { CREATE_BOARD } from "./BoardNew.queries";
 import BoardNewUI from "./BoardNew.presenter";
 import { useState } from 'react'
 import { useRouter } from 'next/router';
