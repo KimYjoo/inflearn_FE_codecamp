@@ -28,30 +28,29 @@ export default function BoardNewUI(props){
             <Container>
                 <Wrapper>
                     <Title>게시물 등록</Title>
-                    <PostForm onSubmit={props.handleSubmit(props.onSubmit)}>
                         <WrapperBody>
                             <UnregisteredAuth>
                                 <UnregisteredItem>
                                     <Tip>작성자</Tip>
-                                    <InputText type='text' placeholder='이름을 입력해주세요.' {...props.register('writer', { required: '이름을 입력해주세요.'})}/>
-                                    <InputError>{props.errors.writer?.message}</InputError>
+                                    <InputText type='text' placeholder='이름을 입력해주세요.' onChange={props.onChangeWriter}/>
+                                    <InputError>{props.writerError}</InputError>
                                 </UnregisteredItem>
                                 <UnregisteredItem>
                                     <Tip>비밀번호</Tip>
-                                    <InputText type='password' placeholder='비밀번호를 입력해주세요.' {...props.register('password', { required: '비밀번호를 입력해주세요.'})}/>
-                                    <InputError>{props.errors.password?.message}</InputError>
+                                    <InputText type='password' placeholder='비밀번호를 입력해주세요.' onChange={props.onChangePassword}/>
+                                    <InputError>{props.passwordError}</InputError>
                                 </UnregisteredItem>
                             </UnregisteredAuth>
                             <PostItem>  
                                 <Tip>제목</Tip>
-                                <InputText placeholder='제목을 작성해주세요.' {...props.register('title', { required: '제목을 입력해주세요.'})}/>
-                                <InputError>{props.errors.title?.message}</InputError>
+                                <InputText placeholder='제목을 작성해주세요.' onChange={props.onChangeTitle}/>
+                                <InputError>{props.titleError}</InputError>
                             </PostItem>
             
                             <PostItem>
                                 <Tip>내용</Tip>
-                                <InputConTents placeholder='내용을 작성해주세요.' {...props.register('contents', { required: '내용을 입력해주세요.'})}/>
-                                <InputError>{props.errors.contents?.message}</InputError>
+                                <InputConTents placeholder='내용을 작성해주세요.' onChange={props.onChangeContents}/>
+                                <InputError>{props.contentsError}</InputError>
                             </PostItem>
             
                             <PostItem>
@@ -100,10 +99,9 @@ export default function BoardNewUI(props){
                             </PostItem>
             
                             <SubmitWrapper>
-                                <ButtonPost>등록하기</ButtonPost> 
+                                <ButtonPost isActive={props.isActive} onClick={props.onSubmit}>등록하기</ButtonPost> 
                             </SubmitWrapper>  
                         </WrapperBody>
-                    </PostForm>
                 </Wrapper>
             </Container>
         )

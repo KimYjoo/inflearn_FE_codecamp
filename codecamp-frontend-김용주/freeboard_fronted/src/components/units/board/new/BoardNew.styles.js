@@ -175,7 +175,8 @@ export const UploadImage = styled.div`
 export const ButtonPost = styled.button`
     width: 179px;
     height: 52px;
-    background-color: #FFD600;
+    /* background-color: #FFD600; */
+    background-color: ${(props) => (props.isActive ?' #FFD600': '#BDBDBD')};
     font-size: 16px;
     border: none;
 `

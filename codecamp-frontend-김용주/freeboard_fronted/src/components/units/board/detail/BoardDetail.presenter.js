@@ -51,6 +51,8 @@ import {
     PostedCommentWriterName,
 } from "./BoardDetail.styles"
 
+import { formattedDate } from "/src/commons/libraries/utils"
+
 export default function BoardDetailUI(props){
 
     return(
@@ -61,7 +63,7 @@ export default function BoardDetailUI(props){
                         <WritterImage src="/user_image.png" alt="유저 프로필 사진"/>
                         <BoardInfoWrapper>
                             <WritterName>{props.data?.fetchBoard?.writer}</WritterName>
-                            <WriteDate>Date : {props.data?.fetchBoard?.updatedAt}</WriteDate>
+                            <WriteDate>Date : {formattedDate(props.data?.fetchBoard?.updatedAt)}</WriteDate>
                         </BoardInfoWrapper>
                         <BoardAdditionalOptions>
                             <ButtonShare src="/share.png"></ButtonShare>
@@ -89,7 +91,7 @@ export default function BoardDetailUI(props){
                 <BoardEditWrapper>
                     <EditOptionBox>목록으로</EditOptionBox>
                     <EditOptionBox>수정하기</EditOptionBox>
-                    <EditOptionBox>삭제하기</EditOptionBox>
+                    <EditOptionBox onClick={() => props.onClickDelete(props.data?.fetchBoard?._id)}>삭제하기</EditOptionBox>
                 </BoardEditWrapper>
                 <DivideLine/>
                 <CommentWrapper>
